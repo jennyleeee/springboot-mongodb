@@ -1,10 +1,8 @@
 package com.example.springbootmongodb.repository;
 
-import com.example.springbootmongodb.model.TodoList;
 import com.example.springbootmongodb.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
-
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
 /**
  * Now we can use MongoRepository’s methods:
@@ -13,12 +11,8 @@ import java.util.List;
  * without implementing these methods.
  */
 
-public interface UserRepository extends MongoRepository<User, String> {
-    List<User> findAll();
+@Repository
+public interface UserRepository extends MongoRepository<User, String>, UserRepositoryCustom{
 
-    User findByEmail(String email);
-
-    User deleteByEmail(String email);
-
-    List<TodoList> findUserByEmail(String email);
+    void ddd();
 }
