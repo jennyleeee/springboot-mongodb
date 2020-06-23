@@ -10,7 +10,74 @@ public class User {
     private String id;
     private String email;
     private String password;
-    private String userName;
+    private String name;
     private String birthday;
-    private int gender; // female = 1, male =2
+    private String gender;
+
+    private User() {
+    }
+
+//    User.id
+//    User.email
+
+
+    //final 상수로 만드는 습관 재할당을 막음 val var
+    public User(String email, String password, String name, String birthday, String gender) {
+        this.email = email;
+        final String dd = email;
+        this.password = password;
+        this.name = name;
+        this.birthday = birthday;
+        this.gender = gender;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    // 유효성 검사 !!!
+    public void setEmail(String email) {
+        this.email = email;
+//        if (!email.contains("@"))
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 }
