@@ -1,5 +1,6 @@
 package com.example.springbootmongodb.repository;
 
+import com.example.springbootmongodb.model.TodoList;
 import com.example.springbootmongodb.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
@@ -18,4 +19,6 @@ public interface UserRepository extends MongoRepository<User, String> {
     User findByEmail(String email);
 
     User deleteByEmail(String email);
+
+    List<TodoList> findUserByEmail(String email);
 }

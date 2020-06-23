@@ -3,6 +3,7 @@ package com.example.springbootmongodb.controller;
 import com.example.springbootmongodb.repository.UserRepository;
 import com.example.springbootmongodb.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+
     @RequestMapping(value = "/users", method = {RequestMethod.GET})
     public ResponseEntity<List<User>> getAllUsers() {
         try {
@@ -34,17 +36,18 @@ public class UserController {
     }
 
 
-
+    // POST => register user
     @RequestMapping(value = "/user", method = {RequestMethod.POST})
     public ResponseEntity<User> createUser(@RequestBody User user) {
         try {
             User _user = userRepository.save(new User(user.getEmail(),user.getPassword(),user.getName(),user.getBirthday(),user.getGender()));
             return new ResponseEntity<>(_user, HttpStatus.CREATED);
-        } catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
         }
     }
 
+    // PUT => change user profile
     @RequestMapping(value = "/user/{email}", method = {RequestMethod.PUT}, produces = "application/json")
     public ResponseEntity<User> updateUserPassword(@PathVariable("email") String email, @RequestBody User user){
         Optional<User> targetUser = Optional.ofNullable(userRepository.findByEmail(email));
@@ -61,6 +64,7 @@ public class UserController {
         }
     }
 
+    // DELETE => delete user
     @RequestMapping(value = "/user/{email}", method = {RequestMethod.DELETE})
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable("email") String email) {
         Optional<User> targetUser = Optional.ofNullable(userRepository.findByEmail(email));

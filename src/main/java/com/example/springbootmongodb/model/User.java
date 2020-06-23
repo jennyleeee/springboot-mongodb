@@ -3,6 +3,8 @@ package com.example.springbootmongodb.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document(collection = "user")
 public class User {
 
@@ -13,6 +15,7 @@ public class User {
     private String name;
     private String birthday;
     private String gender;
+    private List<TodoList> todoLists;
 
     private User() {
     }
