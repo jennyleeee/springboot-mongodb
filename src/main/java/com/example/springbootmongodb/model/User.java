@@ -15,7 +15,7 @@ public class User {
     private String name;
     private String birthday;
     private String gender;
-    private List<TodoList> todoLists;
+//    private List<TodoList> todoLists;
 
     private User() {
     }
@@ -27,7 +27,6 @@ public class User {
     //final 상수로 만드는 습관 재할당을 막음 val var
     public User(String email, String password, String name, String birthday, String gender) {
         this.email = email;
-        final String dd = email;
         this.password = password;
         this.name = name;
         this.birthday = birthday;
@@ -83,4 +82,12 @@ public class User {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+//    public List<TodoList> getTodoLists() {
+//        return todoLists;
+//    }
+//
+//    public void setTodoLists(List<TodoList> todoLists) {
+//        this.todoLists = todoLists;
+//    }
 }
